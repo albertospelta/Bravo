@@ -7,7 +7,15 @@ updates:
     open-pull-requests-limit: 10
     assignees:
     - "albertospelta"
-      
+    
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    assignees:
+    - "albertospelta"
+    
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
