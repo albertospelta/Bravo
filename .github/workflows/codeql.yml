@@ -7,8 +7,12 @@ name: "CodeQL"
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'src/**'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'src/**'
   # schedule:
     # - cron: '37 17 * * 5'
 
@@ -35,10 +39,20 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    #- name: Autobuild
+    #  uses: github/codeql-action/autobuild@v2
+      
+    - if: matrix.language == 'csharp'
+      name: Build CSharp Language
+      run: dotnet build Bravo.sln
+      
+    - if: matrix.language == 'javascript'
+      name: Build JavaScript Language
+      run: |
+        npm ci
+        npm build
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
-        category: "/language:${{matrix.language}}"
+        category: "/language:${{ matrix.language }}"
