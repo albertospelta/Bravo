@@ -1,4 +1,4 @@
-@echo off
-
+@ECHO OFF
+REM dotnet --info
 dotnet build Bravo.sln
-dotnet test .\test\Bravo.Tests\Bravo.Tests.csproj
+dotnet test Bravo.sln --no-build
