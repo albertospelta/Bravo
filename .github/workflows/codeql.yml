@@ -38,19 +38,14 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
-
-    #- name: Autobuild
-    #  uses: github/codeql-action/autobuild@v2
+    
+    - if: matrix.language != 'csharp'
+      name: Autobuild
+      uses: github/codeql-action/autobuild@v2
       
     - if: matrix.language == 'csharp'
-      name: Build CSharp Language
+      name: CSharp Build
       run: dotnet build Bravo.sln
-      
-    - if: matrix.language == 'javascript'
-      name: Build JavaScript Language
-      run: |
-        npm ci
-        npm build
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
