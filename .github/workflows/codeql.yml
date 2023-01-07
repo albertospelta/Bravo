@@ -45,7 +45,7 @@ jobs:
       
     - if: matrix.language == 'csharp'
       name: CSharp Build
-      run: dotnet build Bravo.sln
+      run: dotnet build Bravo.sln /p:AdditionalConstants="CodeQLAnalysis"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

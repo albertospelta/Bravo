@@ -129,7 +129,7 @@
     <ClientAssetsDirectory Condition="'$(ClientAssetsDirectory)' == ''">Scripts\</ClientAssetsDirectory>
     <ClientAssetsRestoreInputs Condition="'$(ClientAssetsRestoreInputs)' == ''">$(ClientAssetsDirectory)package-lock.json;$(ClientAssetsDirectory)package.json</ClientAssetsRestoreInputs>
     <ClientAssetsRestoreOutputs Condition="'$(ClientAssetsRestoreOutputs)' == ''">$(ClientAssetsDirectory)node_modules\.package-lock.json</ClientAssetsRestoreOutputs>
-    <ClientAssetsEnabled Condition="'$(Configuration)' != 'Debug_wwwroot'">true</ClientAssetsEnabled>
+    <ClientAssetsEnabled Condition="'$(Configuration)' != 'Debug_wwwroot' And !$(DefineConstants.Contains('CodeQLAnalysis'))">true</ClientAssetsEnabled>
   </PropertyGroup>
 
   <ItemGroup>
