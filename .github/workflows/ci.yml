@@ -1,6 +1,11 @@
 name: CI
 on:
   pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'test/**'
   workflow_dispatch:
 env:
   configuration: 'Release'
